@@ -16,9 +16,13 @@ const endpoint = "https://flynn.boolean.careers/exercises/api/random/mail";
 //creo la variabile per i singoli indirizzi email inizializzandola a stringa vuota
 let emails = "";
 
+//creo la variabile per il bottone
+const button = document.getElementById('moreEmails');
+
+
 function createEmails () {
 
-    //richiesta Ajax (asincrona) tramite Axios (libreria) verso l'API (servizio esterno) per ottenere 10 email
+//richiesta Ajax (asincrona) tramite Axios (libreria) verso l'API (servizio esterno) per ottenere 10 email
 for (let i = 0; i < 10; i++) {
     
     axios.get(endpoint)
@@ -36,11 +40,11 @@ for (let i = 0; i < 10; i++) {
         <li>${address}</li>
         `
         //console.log(emails);
-            
+                
         //aggancio l'output nell'html
         emailList.innerHTML = emails;
 
-        })
+    })
         
     .catch(error => {
         // codice da eseguire in caso di errore
@@ -53,17 +57,12 @@ for (let i = 0; i < 10; i++) {
 
 createEmails();
 
-
-//creo la variabile per il bottone
-const button = document.getElementById('moreEmails');
-
 //aggiungo una funzione al click del bottone
 button.addEventListener("click", function () {
-    if (emails) {
-        //svuoto l'elenco delle email
-        emails = "";
-        //genero di nuovo la funzione per crearle
-    }  createEmails();  
+    //svuoto l'elenco delle email
+    emails = "";
+    //genero di nuovo la funzione per crearle
+    createEmails();  
   });
 
 
