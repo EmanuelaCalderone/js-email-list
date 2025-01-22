@@ -53,12 +53,16 @@ for (let i = 0; i < 10; i++) {
 
 createEmails();
 
+
+//creo la variabile per il bottone
 const button = document.getElementById('moreEmails');
 
-button.addEventListener("click", function() {
-    emails = false;
-    if (!emails) {
+//aggiungo una funzione al click del bottone
+button.addEventListener("click", function () {
+    if (emails) {
+        //svuoto l'elenco delle email
         emails = "";
+        //genero di nuovo la funzione per crearle
     }  createEmails();  
   });
 
