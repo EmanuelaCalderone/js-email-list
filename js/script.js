@@ -16,18 +16,22 @@ const endpoint = "https://flynn.boolean.careers/exercises/api/random/mail";
 //creo la variabile per i singoli indirizzi email inizializzandola a stringa vuota
 let emails = "";
 
-//richiesta Ajax (asincrona) tramite Axios (libreria) verso l'API (servizio esterno) per ottenere 10 email
+//(richiesta Ajax (asincrona) tramite Axios (libreria) verso l'API (servizio esterno))
+
+//richiesta verso API di Boolean
+
 for (let i = 0; i < 10; i++) {
     
     axios.get(endpoint)
         .then(response => {
         
-        // codice da eseguire in caso di successo
+        // creo la variabile con i singoli oggetti
         const result = response.data;
+        console.log(result);
         
         //creo la variabile che conterrà le email
         let address = result.response;
-        //console.log(response);
+        //console.log(address);
 
         //aggiungo un 'li' ad ogni iterazione
         emails += `
@@ -39,12 +43,6 @@ for (let i = 0; i < 10; i++) {
         emailList.innerHTML = emails;
 
         })
-        
-    .catch(error => {
-        // codice da eseguire in caso di errore
-        console.error(error);
-    });
-
 };
 
 

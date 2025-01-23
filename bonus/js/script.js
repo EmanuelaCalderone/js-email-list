@@ -22,38 +22,36 @@ const button = document.getElementById('moreEmails');
 
 function createEmails () {
 
-//richiesta Ajax (asincrona) tramite Axios (libreria) verso l'API (servizio esterno) per ottenere 10 email
-for (let i = 0; i < 10; i++) {
-    
-    axios.get(endpoint)
-        .then(response => {
-        
-        // codice da eseguire in caso di successo
-        const result = response.data;
-        
-        //creo la variabile che conterrà le email
-        let address = result.response;
-        //console.log(response);
+    //(richiesta Ajax (asincrona) tramite Axios (libreria) verso l'API (servizio esterno))
 
-        //aggiungo un 'li' ad ogni iterazione
-        emails += `
-        <li>${address}</li>
-        `
-        //console.log(emails);
-                
-        //aggancio l'output nell'html
-        emailList.innerHTML = emails;
-
-    })
+    //richiesta verso API di Boolean
+    for (let i = 0; i < 10; i++) {
         
-    .catch(error => {
-        // codice da eseguire in caso di errore
-        console.error(error);
-    });
+        axios.get(endpoint)
+            .then(response => {
+            
+                // creo la variabile con i singoli oggetti
+                const result = response.data;
+                console.log(result);
+            
+                //creo la variabile che conterrà le email
+                let address = result.response;
+                console.log(response);
 
-};
-    return emails;
-};
+                //aggiungo un 'li' ad ogni iterazione
+                emails += `
+            <li>${address}</li>
+            `
+                //console.log(emails);
+                    
+                //aggancio l'output nell'html
+                emailList.innerHTML = emails;
+
+            });
+
+    };
+        return emails;
+    };
 
 createEmails();
 
