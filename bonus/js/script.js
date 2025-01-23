@@ -40,8 +40,8 @@ function createEmails () {
 
                 //aggiungo un 'li' ad ogni iterazione
                 emails += `
-            <li>${address}</li>
-            `
+                <li>${address}</li>
+                `
                 //console.log(emails);
                     
                 //aggancio l'output nell'html
